@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row mb-4 justify-content-center">
+      <div class="col-md-10">
+        <div class="row g-3">
+          <div class="col-auto">
+            <input type="text" placeholder="Name" class="form-control" [(ngModel)]="newTodoName">
+          </div>
+          <div class="col-auto">
+            <input type="text" class="form-control" placeholder="Short description" [(ngModel)]="newTodoDesc">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" (click)="saveTodo();">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+  
+        <table class="table table-dark table-striped p-5">
+          <thead class="p-3">
+            <tr>
+              <th>#</th>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of todos; let i = index;">
+              <th scope="row">{{i+1}}</th>
+              <th><button class="btn btn-sm btn-outline-warning" (click)="completeTodo(i)">Done</button></th>
+              <td class="{{(!task.isCompleted)?'done':''}}">{{task.name}}</td>
+              <td class="{{(!task.isCompleted)?'done':''}}">{{task.description}}</td>
+              <td class="text-danger"><button class="btn btn-sm btn-outline-danger" (click)="remove(i)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>
